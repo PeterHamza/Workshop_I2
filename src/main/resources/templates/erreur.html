@@ -1,0 +1,23 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.css}">
+    <title>Erreur</title>
+</head>
+<body class="text-center">
+<div class="container connexion rounded shadow-lg p-4 mb-4">
+    <p class="h3 mb-3 font-weight-normal">
+        Cette page n'est pas disponible.
+    </p>
+    <p class="text-left">
+        Le serveur a répondu avec l'erreur suivante :
+        <br/>
+        Statut : <span th:text="${status}"></span> (<span th:text="${error}"></span>)
+        <br/>
+        Message : <span th:text="${message}"></span>
+    </p>
+    <a role="button" class="btn btn-danger" th:href="${T(com.epsi.guez.debugme.config.ApplicationUrl).MENU}"> Retour au menu </a>
+</div>
+</body>
+</html>
