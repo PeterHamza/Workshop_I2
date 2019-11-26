@@ -19,7 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Getter
 @Setter
 @Entity
-@Table(name = "utilisateur")
+@Table(name = "user")
 public class Utilisateur implements Serializable, UserDetails {
 
     @Id

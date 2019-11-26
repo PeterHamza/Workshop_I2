@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{css/connexion.css}">
     <title>DebugMe</title>
 </head>
@@ -21,11 +22,14 @@
         <form th:action="@{/connexion}" class="form-signin" method="post" accept-charset="utf-8" autocomplete="off">
             <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
             <div>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur" required autofocus>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur"
+                       required autofocus>
             </div>
             <div>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" required>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe"
+                       required>
             </div>
+
             <div class="message-erreur">
                 <p th:if="${param.error}">Le nom d'utilisateur ou le mot de passe est invalide.</p>
             </div>
@@ -33,6 +37,9 @@
             <br/>
         </form>
     </div>
-</div>
+    <div class="container connexion rounded shadow-lg p-4 mb-4">
+        <button href="connexionLinkedin" class="btn btn-lg btn-success btn-block">Connexion LinkedIn</button>
+        <br/>
+    </div>
 </body>
 </html>
