@@ -3,7 +3,9 @@ package com.epsi.guez.debugme.controller;
 import com.epsi.guez.debugme.config.ApplicationUrl;
 import com.epsi.guez.debugme.config.PageMapping;
 import com.epsi.guez.debugme.exception.DebugMeException;
+import com.epsi.guez.debugme.model.Candidat;
 import com.epsi.guez.debugme.model.Utilisateur;
+import com.epsi.guez.debugme.service.CandidatService;
 import com.epsi.guez.debugme.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +20,11 @@ public class RecruiterController {
 
     private static final String REDIRECT = "redirect:";
 
-    private UtilisateurService utilisateurService;
+    private CandidatService candidatService;
 
     @Autowired
-    public RecruiterController(UtilisateurService utilisateurService) {
-        this.utilisateurService = utilisateurService;
+    public RecruiterController(CandidatService candidatService) {
+        this.candidatService = candidatService;
     }
 
     @RequestMapping(value = ApplicationUrl.CHOIX_CRITERES)
@@ -31,11 +33,15 @@ public class RecruiterController {
     }
 
     @RequestMapping(value = ApplicationUrl.CHOIX_CRITERES, method = RequestMethod.POST)
-    public String choixCriteresPost(int idLangage, int idVille, RedirectAttributes red) {
+    public String choixCriteresPost(int idLangage, int idDepartement, RedirectAttributes red) {
         String url = ApplicationUrl.CHOIX_CRITERES;
         try {
-            List<Utilisateur> users = utilisateurService.findUsersMatching(idLangage, idVille);
-            red.addFlashAttribute("users", users);
+            List<Candidat> candidats = candidatService.findCandidatsMatching(idLangage, idDepartement);
+            if(candidats.isEmpty()){
+                red.addFlashAttribute("message", "Aucun utilisateur trouvé pour le moment !");
+            } else {
+                red.addFlashAttribute("candidats", candidats);
+            }
             url = ApplicationUrl.AFFICHAGE_RESULTATS;
         } catch (DebugMeException e) {
             e.printStackTrace();

@@ -15,6 +15,4 @@ public interface UtilisateurService extends UserDetailsService {
      * @return l'utilisateur correspondant au nom passé en paramètre, null si inexistant
      */
     Utilisateur findOne(String username);
-
-    List<Utilisateur> findUsersMatching(int idLangage, int idVille) throws DebugMeException;
 }

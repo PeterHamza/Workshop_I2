@@ -37,7 +37,7 @@ public class CandidatController {
     }
 
     @RequestMapping(value = ApplicationUrl.QUESTIONNAIRE, method = RequestMethod.POST)
-    public String choixCriteres() {
+    public String questionnairePost() {
         String url = ApplicationUrl.CHOIX_CRITERES;
         try {
             questionnaireService.envoyerReponses();

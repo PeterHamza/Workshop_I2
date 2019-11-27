@@ -43,13 +43,4 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public Utilisateur findOne(String username) {
         return utilisateurDao.findByUsername(username);
     }
-
-    @Override
-    public List<Utilisateur> findUsersMatching(int idLangage, int idVille) throws DebugMeException {
-        List<Utilisateur> utilisateursMatching = new ArrayList<>();
-
-
-
-        return utilisateursMatching;
-    }
 }
