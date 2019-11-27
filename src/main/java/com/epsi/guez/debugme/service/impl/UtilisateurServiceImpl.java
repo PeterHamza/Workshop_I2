@@ -1,5 +1,6 @@
 package com.epsi.guez.debugme.service.impl;
 
+import com.epsi.guez.debugme.exception.DebugMeException;
 import com.epsi.guez.debugme.model.Utilisateur;
 import com.epsi.guez.debugme.model.dao.UtilisateurDao;
 import com.epsi.guez.debugme.service.UtilisateurService;
@@ -8,6 +9,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
@@ -38,5 +42,14 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public Utilisateur findOne(String username) {
         return utilisateurDao.findByUsername(username);
+    }
+
+    @Override
+    public List<Utilisateur> findUsersMatching(int idLangage, int idVille) throws DebugMeException {
+        List<Utilisateur> utilisateursMatching = new ArrayList<>();
+
+
+
+        return utilisateursMatching;
     }
 }

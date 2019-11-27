@@ -15,5 +15,11 @@ public class ApplicationUrl {
      **/
     public static final String ERREUR = "/error";
 
-    public static final String MENU = "/menu";
+    public static final String CONNEXION_LINKEDIN = "/connexion-linkedin";
+    public static final String CHOIX_CRITERES = "/choix-criteres";
+    public static final String AFFICHAGE_RESULTATS = "/affichage-resultats";
+
+    public static final String QUESTIONNAIRE = "/questionnaire";
+    public static final String REGLES = "/regles";
+    public static final String MERCI = "/merci";
 }

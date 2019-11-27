@@ -18,14 +18,4 @@ public class IdentificationController {
     public String connexion() {
         return PageMapping.CONNEXION;
     }
-
-    /**
-     * Redirige vers le menu, il s'agit de la page de redirection par défaut lors d'une authentification avec succès (voir {@link} WebSecurityConfiguration)
-     *
-     * @return l'URL du menu
-     */
-    @RequestMapping(value = ApplicationUrl.MENU, method = RequestMethod.GET)
-    public String menu() {
-        return PageMapping.MENU;
-    }
 }
