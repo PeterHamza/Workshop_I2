@@ -2,12 +2,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>DebugMe</title>
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/commun.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/accordeon.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+
+    <script type="text/javascript">
+        $('document').ready(function () {
+            var $accordeons = $(".panel-heading");
+            $accordeons.each(function () {
+                this.addEventListener("click", function () {
+                    var $thisAccordion = $(this).siblings();
+                    var $otherAccordions = $(this).parent().parent().find(".panel-body").not($thisAccordion);
+                    if ($thisAccordion.css("display") === "block") {
+                        $thisAccordion.css("display", "none");
+                    } else {
+                        $thisAccordion.css("display", "block");
+                    }
+                    $otherAccordions.each(function () {
+                        $(this).css("display", "none");
+                    });
+                });
+            });
+        });
+    </script>
 </head>
+
 <body>
-Mettre ici une brève explication pour le candidat (cette page sert d'index pour revenir en arrière)
+<div th:insert="header :: header"></div>
+<div id="head">
+    <div id="titre">
+        <h1>Règles</h1>
+    </div>
+</div>
+<div id="contenu" class="container rounded text-center font-weight-normal p-4">
+    <div class="container">
+        <div class="panel-group">
+            <div class="my-panel">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Règles
+                    </div>
+                </div>
+                <div class="panel-body" style="display: block">
+                    <div class="panel-collapse">
+                        <p style="font-family: roboto">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="bottom-buttons" class="mr-3">
+                <button type="submit" class="btn btn-success text-white mr-2" id="accepter"> Envoyer le code </button>
+                <a role="button" class="btn btn-danger" th:href="${T(com.epsi.guez.debugme.config.ApplicationUrl).REGLES}"> Retour </a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -2,15 +2,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>DebugMe</title>
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/dataTables.bootstrap4.min.js}"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/commun.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/accordeon.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+
+    <script type="text/javascript">
+        $('document').ready(function () {
+            var $accordeons = $(".panel-heading");
+            $accordeons.each(function () {
+                this.addEventListener("click", function () {
+                    var $thisAccordion = $(this).siblings();
+                    var $otherAccordions = $(this).parent().parent().find(".panel-body").not($thisAccordion);
+                    if ($thisAccordion.css("display") === "block") {
+                        $thisAccordion.css("display", "none");
+                    } else {
+                        $thisAccordion.css("display", "block");
+                    }
+                    $otherAccordions.each(function () {
+                        $(this).css("display", "none");
+                    });
+                });
+            });
+        });
+    </script>
 </head>
+
 <body>
-Mettre ici le choix des critères pour le recruiter
-<form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).DECONNEXION}" method="post">
-    <button type="submit" class="btn btn-danger">Déconnexion</button>
-</form>
+<div th:insert="header :: header"></div>
+<div id="head">
+    <div id="titre">
+        <h1>Choix des critères</h1>
+    </div>
+</div>
+<div id="contenu" class="container rounded text-center font-weight-normal p-4">
+    <div class="container">
+        <div class="panel-group">
+            <div class="my-panel">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Choix des critères
+                    </div>
+                </div>
+                <div class="panel-body" style="display: block">
+                    <div class="panel-collapse">
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="bottom-buttons" class="mr-3">
+                <button type="submit" class="btn btn-success text-white mr-2" id="accepter"> Accepter </button>
+            </div>
+        </div>
+    </div>
+    <form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).DECONNEXION}" method="post">
+        <button type="submit" class="btn btn-danger">Déconnexion</button>
+    </form>
+</div>
 </body>
 </html>
