@@ -31,11 +31,6 @@ public class CandidatController {
         return PageMapping.QUESTIONNAIRE;
     }
 
-    @RequestMapping(value = ApplicationUrl.MERCI)
-    public String merci() {
-        return PageMapping.MERCI;
-    }
-
     @RequestMapping(value = ApplicationUrl.QUESTIONNAIRE, method = RequestMethod.POST)
     public String questionnairePost() {
         String url = ApplicationUrl.CHOIX_CRITERES;
@@ -46,5 +41,10 @@ public class CandidatController {
             e.printStackTrace();
         }
         return REDIRECT + url;
+    }
+
+    @RequestMapping(value = ApplicationUrl.MERCI)
+    public String merci() {
+        return PageMapping.MERCI;
     }
 }

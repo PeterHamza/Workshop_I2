@@ -36,37 +36,61 @@
 </head>
 
 <body>
-<div th:insert="header :: header"></div>
-<div id="head">
-    <div id="titre">
-        <h1>Choix des critères</h1>
-    </div>
+<div id="deconnexion">
+    <form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).DECONNEXION}" method="post">
+        <input type="image" th:src="@{/images/power-button.png}" width="48"/>
+    </form>
+</div>
+
+<div class="d-inline-block">
+    <a th:href="@{/connexion}">
+        <img src="images/logo.png" alt="Logo" width="150px">
+    </a>
+    <h1 style="font-family: roboto">DebugMe</h1>
 </div>
 <div id="contenu" class="container rounded text-center font-weight-normal p-4">
     <div class="container">
         <div class="panel-group">
-            <div class="my-panel">
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        Choix des critères
+            <form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).CHOIX_CRITERES}" method="post" th:object="${form}">
+                <div class="my-panel">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Choix des critères
+                        </div>
+                    </div>
+                    <div class="panel-body" style="display: block">
+                        <div class="panel-collapse">
+                            <div style="display:inline-block">
+                                <div style="display:inline-block">
+                                    <h3 style="font-family: 'Roboto'">Langage</h3>
+                                    <div class="dropdown col-8">
+                                        <select th:field="*{langage}" class="form-control" name="i_langage" id="selectLangage" required>
+                                            <option th:value="${null}" th:text="'Sélectionner...'"></option>
+                                            <option th:each="langage: ${langages}" th:value="${langage.id}"
+                                                    th:text="${langage.nom}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div style="display:inline-block">
+                                    <h3 style="font-family: 'Roboto'">Département</h3>
+                                    <div class="dropdown col-8">
+                                        <select th:field="*{departement}" class="form-control" name="i_departement" id="selectDepartement" required>
+                                            <option th:value="${null}" th:text="'Sélectionner...'"></option>
+                                            <option th:each="departement: ${departements}" th:value="${departement.id}"
+                                                    th:text="${departement.nom}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="panel-body" style="display: block">
-                    <div class="panel-collapse">
-
-
-
-                    </div>
+                <div id="bottom-buttons" class="mr-3">
+                    <button type="submit" class="btn btn-success text-white mr-2" id="accepter"> Accepter</button>
                 </div>
-            </div>
-            <div id="bottom-buttons" class="mr-3">
-                <button type="submit" class="btn btn-success text-white mr-2" id="accepter"> Accepter </button>
-            </div>
+            </form>
         </div>
     </div>
-    <form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).DECONNEXION}" method="post">
-        <button type="submit" class="btn btn-danger">Déconnexion</button>
-    </form>
 </div>
 </body>
 </html>

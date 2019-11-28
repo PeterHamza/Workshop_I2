@@ -211,3 +211,11 @@ table th {
 table.dataTable tbody td {
     vertical-align: middle;
 }
+
+#deconnexion {
+    position: relative;
+    z-index: 99;
+    float: right;
+    margin-top: 40px;
+    margin-right: 40px;
+}

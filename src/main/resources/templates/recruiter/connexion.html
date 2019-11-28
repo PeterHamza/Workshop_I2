@@ -18,28 +18,34 @@
         <h1 style="font-family: roboto">DebugMe</h1>
     </div>
 
-    <div class="container connexion rounded shadow-lg p-4 mb-4">
-        <form th:action="@{/connexion}" class="form-signin" method="post" accept-charset="utf-8" autocomplete="off">
-            <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-            <div>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur"
-                       required autofocus>
-            </div>
-            <div>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe"
-                       required>
-            </div>
+    <div>
+        <div class="container connexion rounded shadow-lg p-4 mb-4 d-inline-block">
+            <form th:action="@{/connexion}" class="form-signin" method="post" accept-charset="utf-8" autocomplete="off">
+                <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+                <div>
+                    <input type="text" name="username" id="username" class="form-control"
+                           placeholder="Nom d'utilisateur"
+                           required autofocus>
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe"
+                           required>
+                </div>
 
-            <div class="message-erreur">
-                <p th:if="${param.error}">Le nom d'utilisateur ou le mot de passe est invalide.</p>
-            </div>
-            <button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>
+                <div class="message-erreur">
+                    <p th:if="${param.error}">Le nom d'utilisateur ou le mot de passe est invalide.</p>
+                </div>
+                <button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>
+                <br/>
+            </form>
+        </div>
+        <div class="container connexion rounded shadow-lg p-4 mb-4 d-inline-block ml-3">
+            <h1 class="h3 mb-3 font-weight-normal">Accéder au questionnaire</h1>
+            <a role="button" class="btn btn-success" th:href="${T(com.epsi.guez.debugme.config.ApplicationUrl).REGLES}">
+                C'est parti ! </a>
             <br/>
-        </form>
+        </div>
     </div>
-    <div class="container connexion rounded shadow-lg p-4 mb-4">
-        <button href="connexionLinkedin" class="btn btn-lg btn-success btn-block">Connexion LinkedIn</button>
-        <br/>
-    </div>
+</div>
 </body>
 </html>

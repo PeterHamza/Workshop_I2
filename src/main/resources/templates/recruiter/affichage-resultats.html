@@ -34,11 +34,18 @@
 </head>
 
 <body>
-<div th:insert="header :: header"></div>
-<div id="head">
-    <div id="titre">
-        <h1>Choix des critères</h1>
-    </div>
+
+<div id="deconnexion">
+    <form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).DECONNEXION}" method="post">
+        <input type="image" th:src="@{/images/power-button.png}" width="48"/>
+    </form>
+</div>
+
+<div class="d-inline-block">
+    <a th:href="@{/connexion}">
+        <img src="images/logo.png" alt="Logo" width="150px">
+    </a>
+    <h1 style="font-family: roboto">DebugMe</h1>
 </div>
 <div id="contenu" class="container rounded text-center font-weight-normal p-4">
     <div class="container">
@@ -51,21 +58,44 @@
                 </div>
                 <div class="panel-body" style="display: block">
                     <div class="panel-collapse">
-                        <p style="font-family: roboto">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                        <th:block th:each="candidat, iter : ${candidats}">
+                            <fieldset>
+                                <div class="row position-relative">
+                                    <div class="col-4 text-right pt-2">
+                                        <label class="form-check-label" for="numero">Candidat n°</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <span th:text="${iter.index + 1}" id="numero" class="form-control"></span>
+                                    </div>
+                                </div>
+                                <div class="row position-relative">
+                                    <div class="col-4 text-right pt-2">
+                                        <label class="form-check-label" for="score">Score</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <a th:text="${candidat.score}" id="score" class="form-control"></a>
+                                    </div>
+                                </div>
+                                <div class="row position-relative">
+                                    <div class="col-4 text-right pt-2">
+                                        <label class="form-check-label" for="linkedin">Profil Linkedin</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <a th:href="${candidat.lienLinkedin}" th:text="${candidat.lienLinkedin}" class="form-control" id="linkedin"></a>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </th:block>
                     </div>
                 </div>
             </div>
             <div id="bottom-buttons" class="mr-3">
-                <button type="submit" class="btn btn-success text-white mr-2" id="accepter"> Accepter </button>
-                <a role="button" class="btn btn-danger" th:href="${T(com.epsi.guez.debugme.config.ApplicationUrl).REGLES}"> Retour </a>
+                <button type="submit" class="btn btn-success text-white mr-2" id="accepter"> Accepter</button>
+                <a role="button" class="btn btn-danger"
+                   th:href="${T(com.epsi.guez.debugme.config.ApplicationUrl).CHOIX_CRITERES}"> Retour </a>
             </div>
         </div>
     </div>
-    <form th:action="${T(com.epsi.guez.debugme.config.ApplicationUrl).DECONNEXION}" method="post">
-        <button type="submit" class="btn btn-danger">Déconnexion</button>
-    </form>
 </div>
 </body>
 </html>
